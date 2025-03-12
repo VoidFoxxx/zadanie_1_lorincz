@@ -44,37 +44,7 @@ https://templatemo.com/tm-562-space-dynamic
   </div>
   <!-- ***** Preloader End ***** -->
 
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <h4>Spac<span>Dyna</span></h4>
-            </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="#about">About Us</a></li>
-              <li class="scroll-to-section"><a href="#services">Services</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Portfolio</a></li>
-              <li class="scroll-to-section"><a href="#blog">Blog</a></li> 
-              <li class="scroll-to-section"><a href="#contact">Message Us</a></li> 
-              <li class="scroll-to-section"><div class="main-red-button"><a href="#contact">Contact Now</a></div></li> 
-            </ul>        
-            <a class='menu-trigger'>
-                <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
+  <?php include "parts/header.php"?>
 
   <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
     <div class="container">
@@ -118,50 +88,25 @@ https://templatemo.com/tm-562-space-dynamic
         <div class="col-lg-8 align-self-center">
           <div class="services">
             <div class="row">
-              <div class="col-lg-6">
-                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-                  <div class="icon">
-                    <img src="assets/images/service-icon-01.png" alt="reporting">
-                  </div>
-                  <div class="right-text">
-                    <h4>Data Analysis</h4>
-                    <p>Lorem ipsum dolor sit amet, ctetur aoi adipiscing eliter</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
-                  <div class="icon">
-                    <img src="assets/images/service-icon-02.png" alt="">
-                  </div>
-                  <div class="right-text">
-                    <h4>Data Reporting</h4>
-                    <p>Lorem ipsum dolor sit amet, ctetur aoi adipiscing eliter</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.9s">
-                  <div class="icon">
-                    <img src="assets/images/service-icon-03.png" alt="">
-                  </div>
-                  <div class="right-text">
-                    <h4>Web Analytics</h4>
-                    <p>Lorem ipsum dolor sit amet, ctetur aoi adipiscing eliter</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="1.1s">
-                  <div class="icon">
-                    <img src="assets/images/service-icon-04.png" alt="">
-                  </div>
-                  <div class="right-text">
-                    <h4>SEO Suggestions</h4>
-                    <p>Lorem ipsum dolor sit amet, ctetur aoi adipiscing eliter</p>
-                  </div>
-                </div>
-              </div>
+              <?php 
+                $json = file_get_contents("data.json");
+                $data = json_decode($json, true);
+                for($i=0;$i<sizeof($data);$i++){
+                  echo('
+                    <div class="col-lg-6">
+                      <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+                        <div class="icon">
+                          <img src="assets/images/service-icon-01.png" alt="reporting">
+                        </div>
+                        <div class="right-text">
+                          <h4>'.$data[$i]["title"].'</h4>
+                          <p>'.$data[$i]["desc"].'</p>
+                         </div>
+                      </div>
+                    </div>
+                  ');
+                }
+              ?>
             </div>
           </div>
         </div>
@@ -403,17 +348,7 @@ https://templatemo.com/tm-562-space-dynamic
     </div>
   </div>
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
-          <p>© Copyright 2021 Space Dynamic Co. All Rights Reserved. 
-          
-          <br>Design: <a rel="nofollow" href="https://templatemo.com">TemplateMo</a></p>
-        </div>
-      </div>
-    </div>
-  </footer>
+<?php include "parts/footer.php"?>
   <!-- Scripts -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
